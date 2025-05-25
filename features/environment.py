@@ -28,11 +28,12 @@ def before_scenario(context,scenario):
     if tipo_ejecucion=="grid":
         grid_url=os.getenv("GRID_URL")
         context.browser= webdriver.Remote(command_executor=grid_url,options=navegador)
-    elif tipo_ejecucion=="jenkins":
-        navegador.add_argument('--headless')
-        navegador.add_argument('--no-sandbox')
-        navegador.add_argument('--disable-dev-shm-usage')
-    else:
+    else :
+        if tipo_ejecucion=="jenkins":
+            navegador.add_argument('--headless')
+            navegador.add_argument('--no-sandbox')
+            navegador.add_argument('--disable-dev-shm-usage')
+
         if "firefox" in scenario.tags:
             context.browser = webdriver.Firefox(options=navegador)
         elif "edge" in scenario.tags:
