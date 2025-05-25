@@ -2,3 +2,4 @@ selenium
 behave
 behave-html-formatter
 python-dotenv
+allure-behave
